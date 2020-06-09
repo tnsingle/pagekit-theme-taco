@@ -1,0 +1,11 @@
+{
+     "name": "theme-taco",
+     "devDependencies": {
+          "gulp": "*",
+          "gulp-less": "*",
+          "gulp-rename": "*"
+     },
+     "dependencies": {
+          "uikit": "^3.5.4-dev.9e52d84c8"
+     }
+}

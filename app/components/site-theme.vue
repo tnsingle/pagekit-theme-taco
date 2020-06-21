@@ -27,6 +27,13 @@
             </div>
         </div>
 
+        <div class="uk-form-row">
+            <label class="uk-form-label">{{ 'Front Page Intro Text' | trans }}</label>
+            <div class="uk-form-controls uk-form-width-large">
+                <input type="textarea" v-model="config.intro">
+            </div>
+        </div>
+
     </div>
 
 </template>

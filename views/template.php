@@ -11,20 +11,29 @@
     <body>
 
         <?php if ($params['logo'] || $view->menu()->exists('main') || $view->position()->exists('navbar')) : ?>
-        <header class="uk-padding-large">
+        <header class="taco-header uk-position-relative uk-overflow-hidden uk-light">
 
-            <?php if ($view->menu()->exists('main') || $view->position()->exists('navbar')) : ?>
+            <div class="taco-header-content uk-position-relative uk-padding-large uk-position-z-index">
+                <?php if ($view->menu()->exists('main') || $view->position()->exists('navbar')) : ?>
                     <nav class="uk-align-right"><?= $view->menu('main', 'menu-navbar.php') ?></nav>
-            <?php endif ?>
-            <div class="uk-width-large">
-                <a href="<?= $view->url()->get() ?>">
-                    <?php if ($logo = $params['logo']) : ?>
-                        <img src="<?= $this->escape($logo) ?>" alt="">
-                    <?php else : ?>
-                        <?= $params['title'] ?>
+                <?php endif ?>
+                <div class="uk-width-large">
+                    <a href="<?= $view->url()->get() ?>">
+                        <?php if ($logo = $params['logo']) : ?>
+                            <img src="<?= $this->escape($logo) ?>" alt="">
+                        <?php else : ?>
+                            <?= $params['title'] ?>
+                        <?php endif ?>
+                    </a>
+                    <?php if ($params['intro']) : ?>
+                        <p class="taco-header-intro"><?= $params['intro'] ?></p>
                     <?php endif ?>
-                </a>
+                </div>
             </div>
+            
+            <video class="taco-header-video uk-position-absolute uk-position-top uk-position-right" uk-video preload="auto" muted="" autoplay="" loop="">
+                <source src="./packages/inspiredbynikki/theme-taco/students.mp4" type="video/mp4">
+            </video>
         </header>
         <?php endif ?>
         

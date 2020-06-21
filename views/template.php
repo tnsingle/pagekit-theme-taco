@@ -10,27 +10,47 @@
     </head>
     <body>
 
-        <!-- Render logo or title with site URL -->
-        <a href="<?= $view->url()->get() ?>">
-            <?php if ($logo = $params['logo']) : ?>
-                <img src="<?= $this->escape($logo) ?>" alt="">
-            <?php else : ?>
-                <?= $params['title'] ?>
+        <?php if ($params['logo'] || $view->menu()->exists('main') || $view->position()->exists('navbar')) : ?>
+        <header class="uk-padding-large">
+
+            <?php if ($view->menu()->exists('main') || $view->position()->exists('navbar')) : ?>
+                    <nav class="uk-align-right"><?= $view->menu('main', 'menu-navbar.php') ?></nav>
             <?php endif ?>
-        </a>
-
-        <!-- Render menu position -->
-        <?php if ($view->menu()->exists('main')) : ?>
-            <?= $view->menu('main') ?>
+            <div class="uk-width-large">
+                <a href="<?= $view->url()->get() ?>">
+                    <?php if ($logo = $params['logo']) : ?>
+                        <img src="<?= $this->escape($logo) ?>" alt="">
+                    <?php else : ?>
+                        <?= $params['title'] ?>
+                    <?php endif ?>
+                </a>
+            </div>
+        </header>
         <?php endif ?>
+        
 
-        <!-- Render widget position -->
-        <?php if ($view->position()->exists('sidebar')) : ?>
-            <?= $view->position('sidebar') ?>
-        <?php endif; ?>
+        <div id="taco-main" class="taco-main uk-block">
+    <div class="uk-container uk-container-center">
 
-        <!-- Render content -->
-        <?= $view->render('content') ?>
+        <div class="uk-flex">
+
+            <main class="<?= $view->position()->exists('sidebar') ? 'uk-width-medium-3-4' : 'uk-width-1-1'; ?>">
+
+                <!-- Render content -->
+                <?= $view->render('content') ?>
+
+            </main>
+
+            <?php if ($view->position()->exists('sidebar')) : ?>
+            <aside class="uk-width-medium-1-4">
+                <?= $view->position('sidebar') ?>
+            </aside>
+            <?php endif; ?>
+
+        </div>
+
+    </div>
+</div>
 
         <!-- Insert code before the closing body tag  -->
         <?= $view->render('footer') ?>

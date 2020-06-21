@@ -20,6 +20,8 @@
           "uikit": "^3.5.4-dev.9e52d84c8"
      },
      "scripts": {
-          "build": "webpack --config webpack.config.js"
+          "build": "webpack --config webpack.config.js",
+          "install": "bower install && gulp",
+          "archive": "gulp && webpack -p && composer archive --format=zip"
      }
 }

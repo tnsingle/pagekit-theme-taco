@@ -3,6 +3,29 @@
 
 @brand-dark-blue: #0D324D;
 
+@max1024Breakpoint: 1199px;
+@min1024Breakpoint: 560px;
+
+@minTabletBreakpoint: 768px; 
+@maxTabletBreakpoint: 1024px;
+@mobileBreakpoint: 559px;
+
+// Calculations
+@desktopLargeBreakPoint: (@max1024Breakpoint + 1px);
+@mobile-lg-max-width: (@min1024Breakpoint - 1px);
+
+
+// Breakpoints
+// ------------------------- Source: http://blog.scur.pl/2012/06/variable-media-queries-less-css/
+@mobile:      ~"only screen and (max-width: @{mobileBreakpoint})"; // < 559px
+
+@mobile-lg:   ~"only screen and (min-width: 540px) and (max-width: @{mobile-lg-max-width})"; // 540 - 559px
+
+
+@desktop:	  ~"only screen and (min-width: @{min1024Breakpoint})"; // > 560px
+@desktop-sm:  ~"only screen and (min-width: @{min1024Breakpoint}) and (max-width: @{max1024Breakpoint})"; // 560 - 1520px
+@desktop-lg:  ~"only screen and (min-width: @{desktopLargeBreakPoint})"; // > 1519px
+
 .brand-dark-blue {
 	color: @brand-dark-blue;
 }
@@ -13,9 +36,10 @@
 
 .taco-header{
 
-	width: 100vw;
+	width: 100%;
 	height: 100vh;
 	min-height: 600px;
+	overflow:hidden;
 
 	&:after{
 		content: "";
@@ -30,10 +54,26 @@
 	}
 
 	&-intro {
-		margin: 5rem 3rem 3rem 8rem;
-	    font-size: 1.45rem;
-	    border-left: 3px solid #FFD800;
-	    padding-left: 3rem;
+		margin: 3rem 0;
+		text-align: center;
+	    font-size: 1.25rem;
+
+	    @media @desktop{
+	    	text-align: left;
+	    	margin: 5rem 3rem 3rem 8rem;
+	    	font-size: 1.45rem;
+	    	border-left: 3px solid #FFD800;
+	    	padding-left: 3rem;
+	    }
+
+	    @media @desktop-lg{
+	    	font-size: 1.65rem;
+	    }
+	    
+	}
+
+	&-video{
+		max-width: none;
 	}
 	
 }

@@ -29,8 +29,13 @@
 
         <div class="uk-form-row">
             <label class="uk-form-label">{{ 'Front Page Intro Text' | trans }}</label>
+            <textarea class="uk-textarea uk-form-large uk-form-width-large" v-model="config.intro"></textarea>
+        </div>
+
+        <div class="uk-form-row">
+            <label class="uk-form-label">{{ 'Video CDN Url for Header' | trans }}</label>
             <div class="uk-form-controls uk-form-width-large">
-                <input type="textarea" v-model="config.intro">
+                <input class="uk-textarea" type="textarea" v-model="config.header_video_url">
             </div>
         </div>
 
